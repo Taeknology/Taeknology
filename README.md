@@ -1,21 +1,27 @@
 ### Hi, I'm Taeknology 👋
 
-**DBA** — MySQL specialist with a focus on data infrastructure and automation.
+**Database Administrator** specializing in MySQL, data infrastructure, and automation.
 
-I work on managed DBMS products in Korea, focusing on MySQL, MariaDB, Redis, and Valkey.
+I have managed and improved database platforms across diverse domains, including cloud services, gaming, webtoons, and music.
 
-I have been responsible for DBMS platforms across diverse domains, including gaming, webtoons, cloud services, and music.
+I also provide technical guidance on the design and development of managed DBMS services at a cloud service provider.
+
+**Environments**
+
+* On-Premises · Cloud (NHN Cloud · AWS)
 
 **Databases**
-- MySQL · MariaDB · Oracle
-- MongoDB · Redis(Valkey) · Kafka
 
-**Interests**
-- Database & Infrastructure Automation
-- Monitoring
-- Python · Agentic Coding
+* MySQL · MariaDB · Oracle
+* MongoDB · Redis · Valkey · Kafka
 
-## Projects I Contribute To
+**Engineering**
+
+* Database Tooling & Automation
+* Observability & Monitoring
+* Python · Agentic Coding
+
+## Open Source Contributions
 
 [Valkey](https://github.com/valkey-io/valkey) · [CPython](https://github.com/python/cpython) · [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
 

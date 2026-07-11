@@ -15,6 +15,10 @@ I have been responsible for DBMS platforms across diverse domains, including gam
 - Monitoring
 - Python · Agentic Coding
 
+## Projects I Follow
+
+[MySQL](https://github.com/mysql/mysql-server) · [MariaDB](https://github.com/MariaDB/server) · [Valkey](https://github.com/valkey-io/valkey) · [Vitess](https://github.com/vitessio/vitess) · [ClickHouse](https://github.com/ClickHouse/ClickHouse)
+
 ## GitHub Activity
 
 [![GitHub stats](./assets/github-stats.svg)](https://github.com/Taeknology)

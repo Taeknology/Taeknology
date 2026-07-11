@@ -1,0 +1,43 @@
+name: Update OSS activity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/scripts/update_oss_activity.py
+      - .github/scripts/test_update_oss_activity.py
+      - .github/workflows/profile-oss-activity.yml
+  schedule:
+    - cron: "47 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-oss-activity
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Test update logic
+        run: python3 .github/scripts/test_update_oss_activity.py
+
+      - name: Update OSS activity
+        run: python3 .github/scripts/update_oss_activity.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updated activity
+        run: |
+          git add README.md
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update OSS activity"
+          git push

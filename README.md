@@ -11,7 +11,7 @@ I have been responsible for DBMS platforms across diverse domains, including gam
 - MongoDB · Redis(Valkey) · Kafka
 
 **Interests**
-- Business & Infrastructure Automation
+- Database & Infrastructure Automation
 - Monitoring
 - Python · Agentic Coding
 

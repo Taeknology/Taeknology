@@ -21,6 +21,7 @@ DISPLAY_NAMES = {
     "python/cpython": "CPython",
     "Yeachan-Heo/oh-my-claudecode": "oh-my-claudecode",
 }
+EXCLUDED_REPOSITORIES = {"gianters/calculator"}
 
 QUERY = """
 query RecentMergedPullRequests($query: String!, $cursor: String) {
@@ -98,6 +99,7 @@ def select_activity(
         pull_request
         for pull_request in pull_requests
         if pull_request["repository"]["owner"]["login"].casefold() != username.casefold()
+        and pull_request["repository"]["nameWithOwner"] not in EXCLUDED_REPOSITORIES
     ]
     external.sort(key=lambda pull_request: pull_request["mergedAt"], reverse=True)
 

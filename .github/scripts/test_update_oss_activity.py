@@ -24,6 +24,7 @@ def pull_request(repo, owner, number, merged_at, stars=0):
 class UpdateOssActivityTest(unittest.TestCase):
     def test_projects_are_unique_and_star_sorted_but_recent_prs_are_date_sorted(self):
         pull_requests = [
+            pull_request("gianters/calculator", "gianters", 7, "2026-07-12T00:00:00Z", 1),
             pull_request("valkey-io/valkey", "valkey-io", 6, "2026-07-11T00:00:00Z", 22000),
             pull_request("valkey-io/valkey", "valkey-io", 5, "2026-07-10T00:00:00Z", 22000),
             pull_request("python/cpython", "python", 4, "2026-07-09T00:00:00Z", 70000),

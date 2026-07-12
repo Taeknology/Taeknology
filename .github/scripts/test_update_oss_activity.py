@@ -23,9 +23,12 @@ def pull_request(repo, owner, number, merged_at):
 class UpdateOssActivityTest(unittest.TestCase):
     def test_projects_are_unique_but_recent_pull_requests_allow_duplicates(self):
         pull_requests = [
-            pull_request("valkey-io/valkey", "valkey-io", 2, "2026-07-11T00:00:00Z"),
-            pull_request("valkey-io/valkey", "valkey-io", 1, "2026-07-10T00:00:00Z"),
-            pull_request("python/cpython", "python", 3, "2026-07-09T00:00:00Z"),
+            pull_request("valkey-io/valkey", "valkey-io", 6, "2026-07-11T00:00:00Z"),
+            pull_request("valkey-io/valkey", "valkey-io", 5, "2026-07-10T00:00:00Z"),
+            pull_request("python/cpython", "python", 4, "2026-07-09T00:00:00Z"),
+            pull_request("python/cpython", "python", 3, "2026-07-08T00:00:00Z"),
+            pull_request("example/project", "example", 2, "2026-07-07T00:00:00Z"),
+            pull_request("example/project", "example", 1, "2026-07-06T00:00:00Z"),
             pull_request("Taeknology/owned", "Taeknology", 4, "2026-07-12T00:00:00Z"),
         ]
 
@@ -33,9 +36,9 @@ class UpdateOssActivityTest(unittest.TestCase):
 
         self.assertEqual(
             [project["nameWithOwner"] for project in projects],
-            ["valkey-io/valkey", "python/cpython"],
+            ["valkey-io/valkey", "python/cpython", "example/project"],
         )
-        self.assertEqual([pull_request["number"] for pull_request in recent], [2, 1, 3])
+        self.assertEqual([pull_request["number"] for pull_request in recent], [6, 5, 4, 3, 2])
 
     def test_readme_marker_blocks_are_replaced(self):
         readme = """projects

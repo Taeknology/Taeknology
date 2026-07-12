@@ -92,7 +92,7 @@ def fetch_pull_requests(token: str, username: str, since: str) -> list[dict[str,
 
 
 def select_activity(
-    pull_requests: list[dict[str, Any]], username: str, recent_count: int = 3
+    pull_requests: list[dict[str, Any]], username: str, recent_count: int = 5
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     external = [
         pull_request

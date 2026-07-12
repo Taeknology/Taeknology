@@ -8,7 +8,6 @@ import os
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -40,6 +39,7 @@ query RecentMergedPullRequests($query: String!, $cursor: String) {
           name
           nameWithOwner
           url
+          stargazerCount
           owner {
             login
           }
@@ -75,8 +75,8 @@ def graphql(token: str, variables: dict[str, Any]) -> dict[str, Any]:
     return payload["data"]["search"]
 
 
-def fetch_pull_requests(token: str, username: str, since: str) -> list[dict[str, Any]]:
-    search_query = f"author:{username} is:pr is:merged merged:>={since}"
+def fetch_pull_requests(token: str, username: str) -> list[dict[str, Any]]:
+    search_query = f"author:{username} is:pr is:merged"
     cursor = None
     pull_requests: list[dict[str, Any]] = []
 
@@ -101,14 +101,18 @@ def select_activity(
     ]
     external.sort(key=lambda pull_request: pull_request["mergedAt"], reverse=True)
 
-    projects: list[dict[str, Any]] = []
-    seen: set[str] = set()
+    projects_by_name: dict[str, dict[str, Any]] = {}
     for pull_request in external:
         repository = pull_request["repository"]
-        if repository["nameWithOwner"] in seen:
-            continue
-        seen.add(repository["nameWithOwner"])
-        projects.append(repository)
+        projects_by_name.setdefault(repository["nameWithOwner"], repository)
+
+    projects = sorted(
+        projects_by_name.values(),
+        key=lambda repository: (
+            -repository["stargazerCount"],
+            repository["nameWithOwner"].casefold(),
+        ),
+    )
 
     return projects, external[:recent_count]
 
@@ -123,7 +127,7 @@ def project_name(repository: dict[str, Any]) -> str:
 
 def render_projects(projects: list[dict[str, Any]]) -> str:
     if not projects:
-        return "_No merged external contributions in the last 12 months._"
+        return "_No merged external contributions._"
     return " · ".join(
         f"[{markdown_escape(project_name(repository))}]({repository['url']})"
         for repository in projects
@@ -164,8 +168,7 @@ def main() -> int:
         print("GITHUB_TOKEN or GH_TOKEN is required", file=sys.stderr)
         return 2
 
-    since = (datetime.now(timezone.utc) - timedelta(days=365)).date().isoformat()
-    pull_requests = fetch_pull_requests(token, username, since)
+    pull_requests = fetch_pull_requests(token, username)
     projects, recent = select_activity(pull_requests, username)
 
     readme_path = Path("README.md")

@@ -22,6 +22,7 @@ DISPLAY_NAMES = {
     "Yeachan-Heo/oh-my-claudecode": "oh-my-claudecode",
 }
 EXCLUDED_REPOSITORIES = {"gianters/calculator"}
+FEATURED_REPOSITORIES = {"python/cpython", "valkey-io/valkey"}
 
 QUERY = """
 query RecentMergedPullRequests($query: String!, $cursor: String) {
@@ -111,6 +112,7 @@ def select_activity(
     projects = sorted(
         projects_by_name.values(),
         key=lambda repository: (
+            repository["nameWithOwner"] not in FEATURED_REPOSITORIES,
             -repository["stargazerCount"],
             repository["nameWithOwner"].casefold(),
         ),

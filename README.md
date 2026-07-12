@@ -24,7 +24,7 @@ I also provide technical guidance on the design and development of managed DBMS 
 ## Open Source Contributions
 
 <!-- OSS-PROJECT-LIST:START -->
-[CPython](https://github.com/python/cpython) · [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) · [Valkey](https://github.com/valkey-io/valkey) · [Claude-Usage-Tracker](https://github.com/hamed-elfayome/Claude-Usage-Tracker)
+[CPython](https://github.com/python/cpython) · [Valkey](https://github.com/valkey-io/valkey) · [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) · [Claude-Usage-Tracker](https://github.com/hamed-elfayome/Claude-Usage-Tracker)
 <!-- OSS-PROJECT-LIST:END -->
 
 ### Recently Merged

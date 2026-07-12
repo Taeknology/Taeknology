@@ -22,15 +22,16 @@ def pull_request(repo, owner, number, merged_at, stars=0):
 
 
 class UpdateOssActivityTest(unittest.TestCase):
-    def test_projects_are_unique_and_star_sorted_but_recent_prs_are_date_sorted(self):
+    def test_featured_projects_come_first_and_each_group_is_star_sorted(self):
         pull_requests = [
             pull_request("gianters/calculator", "gianters", 7, "2026-07-12T00:00:00Z", 1),
             pull_request("valkey-io/valkey", "valkey-io", 6, "2026-07-11T00:00:00Z", 22000),
             pull_request("valkey-io/valkey", "valkey-io", 5, "2026-07-10T00:00:00Z", 22000),
             pull_request("python/cpython", "python", 4, "2026-07-09T00:00:00Z", 70000),
             pull_request("python/cpython", "python", 3, "2026-07-08T00:00:00Z", 70000),
-            pull_request("example/project", "example", 2, "2026-07-07T00:00:00Z", 100),
-            pull_request("example/project", "example", 1, "2026-07-06T00:00:00Z", 100),
+            pull_request("example/project", "example", 2, "2026-07-07T00:00:00Z", 50000),
+            pull_request("example/project", "example", 1, "2026-07-06T00:00:00Z", 50000),
+            pull_request("example/small", "example", 8, "2026-07-05T00:00:00Z", 100),
             pull_request("Taeknology/owned", "Taeknology", 4, "2026-07-12T00:00:00Z"),
         ]
 
@@ -38,7 +39,7 @@ class UpdateOssActivityTest(unittest.TestCase):
 
         self.assertEqual(
             [project["nameWithOwner"] for project in projects],
-            ["python/cpython", "valkey-io/valkey", "example/project"],
+            ["python/cpython", "valkey-io/valkey", "example/project", "example/small"],
         )
         self.assertEqual([pull_request["number"] for pull_request in recent], [6, 5, 4, 3, 2])
 

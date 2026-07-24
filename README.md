@@ -30,11 +30,11 @@ I also provide technical guidance on the design and development of managed DBMS 
 ### Recently Merged
 
 <!-- OSS-PR-LIST:START -->
+- [Valkey #3769](https://github.com/valkey-io/valkey/pull/3769) — Preserve module load order in CONFIG REWRITE
 - [Claude-Usage-Tracker #242](https://github.com/hamed-elfayome/Claude-Usage-Tracker/pull/242) — feat(credentials): Per-profile keychain source pin + auto-refresh
 - [CPython #153562](https://github.com/python/cpython/pull/153562) — gh-102591: Document that urlcleanup resets the global opener
 - [Valkey #3764](https://github.com/valkey-io/valkey/pull/3764) — Deflake io-threads test by anchoring active-time bound to a per-reactivation baseline
 - [Valkey #3772](https://github.com/valkey-io/valkey/pull/3772) — Deflake diskless timeout rdb pipe test by tolerating either timeout-disconnect branch
-- [CPython #150053](https://github.com/python/cpython/pull/150053) — gh-149716: Document PySlot_DATA for Py_mod_gil and Py_mod_multiple_interpreters
 <!-- OSS-PR-LIST:END -->
 
 ## GitHub Activity

@@ -8,7 +8,7 @@
         role="img"
         aria-labelledby="descId"
       >
-        <title id="titleId">Taeknology's GitHub Stats, Rank: C</title>
+        <title id="titleId">Taeknology&#39;s GitHub Stats, Rank: C</title>
         <desc id="descId">Total Stars Earned: 0, Total Commits  : 29, Total PRs: 29, Total Issues: 10, Contributed to (last year): 9</desc>
         <style>
           .header {

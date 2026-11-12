@@ -30,11 +30,11 @@ I also provide technical guidance on the design and development of managed DBMS 
 ### Recently Merged
 
 <!-- OSS-PR-LIST:START -->
+- [Valkey #4313](https://github.com/valkey-io/valkey/pull/4313) — Deflake diskless timeout replica count assertion
 - [ClickHouse #105472](https://github.com/ClickHouse/ClickHouse/pull/105472) — Expose aggregate dictionary metrics in system.asynchronous_metrics
 - [CPython #155171](https://github.com/python/cpython/pull/155171) — gh-150942: Speed up BytesIO.readlines() using reference-stealing append
 - [CPython #155030](https://github.com/python/cpython/pull/155030) — gh-84291: Clarify Pool.imap documentation
 - [Valkey #4102](https://github.com/valkey-io/valkey/pull/4102) — Deflake "Replica output bytes metric" with atomic stats capture
-- [CPython #150074](https://github.com/python/cpython/pull/150074) — gh-135828: Disable syntax highlighting in Using Python on macOS
 <!-- OSS-PR-LIST:END -->
 
 ## GitHub Activity
